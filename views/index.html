@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="inpulze">
+    <meta name="author" content="inpulze.com">
+    <link rel="shortcut icon" href="assets/ico/favicon.png">
+
+    <title> Discover Innovations</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="assets/css/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/icomoon.css">
+    <link href="assets/css/animate-custom.css" rel="stylesheet">
+
+
+    
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="assets/js/modernizr.custom.js"></script>
+   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">  </script>
+    <script>
+      $(document).ready(function(){
+        var user,emailid;
+        $("#Contact").click(function(){
+          window.location = location.href + "Contact";
+        });
+        $("#submit").click(function(){
+          user=$("#user").val();
+          emailid=$("#email").val();
+          $.post(location.href + "submit",{name: user,emailid: emailid}, function(data){
+            if(data==='done')
+              {
+                alert("Thank you for the subscription");
+              }
+              if(data==='subscriber')
+              {
+                alert("Thank you for the subscription");
+              }
+          });
+        });
+      });
+    </script>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="assets/js/html5shiv.js"></script>
+      <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body data-spy="scroll" data-offset="0" data-target="#navbar-main">
+  
+  
+  	<div id="navbar-main">
+      <!-- Fixed navbar -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon icon-shield" style="font-size:30px; color:#3498db;">
+            <ul class="nav navbar-nav">
+            <li><a href="#home" class="smoothScroll">INPULZE</a></li>
+            </span>
+          </button>
+          <a class="navbar-brand hidden-xs hidden-sm" href="#home"><span class="icon icon-shield" style="font-size:18px; color:#3498db;"></span></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="#home" class="smoothScroll">INPULZE</a></li>
+            <li><a href="#home" class="smoothScroll">Home</a></li>
+			<li> <a href="#about" class="smoothScroll"> About</a></li>
+			<li> <a href="#vision" class="smoothScroll"> Vision</a></li>
+			<li> <a href="#team" class="smoothScroll"> Team</a></li>
+			<li> <a href="#blog" class="smoothScroll"> Blog</a></li>
+			<li> <a href="#contact" class="smoothScroll"> Contact</a></li>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+    </div>
+
+  
+  
+		<!-- ==== HEADERWRAP ==== -->
+	    <div id="headerwrap" id="home" name="home">
+			<header class="clearfix">
+	  		 		<h1><span class="icon icon-shield"></span></h1>
+	  		 		<p>INPULZE</p>
+	  		 		<p>Discover Innovations Faster</p>
+	  		</header>	    
+	    </div><!-- /headerwrap -->
+
+		<!-- ==== GREYWRAP ==== -->
+		<div id="greywrap">
+			<div class="row">
+				<div class="col-lg-4 callout">
+					<span class="icon icon-stack"></span>
+					<h2>Ignite</h2>
+					<p>Be part of the change </p>
+				</div><!-- col-lg-4 -->
+					
+				<div class="col-lg-4 callout">
+					<span class="icon icon-eye"></span>
+					<h2>Stand out</h2>
+					<p>Our product are advanced and stylish.Feel the future</p>
+				
+				</div><!-- col-lg-4 -->	
+				
+				<div class="col-lg-4 callout">
+					<span class="icon icon-heart"></span>
+					<h2>Support</h2>
+					<p>We believe that great products come from people. Endorse the difference</p>
+				</div><!-- col-lg-4 -->	
+			</div><!-- row -->
+		</div><!-- greywrap -->
+		
+		<!-- ==== ABOUT ==== -->
+		<div class="container" id="about" name="about">
+			<div class="row white">
+			<br>
+				<h1 class="centered">A LITTLE ABOUT OUR COMPANY</h1>
+				<hr>
+				
+				<div class="col-lg-6">
+					<p>What really motivates us is a belief that innovations change the world for better. We help innovators to finance, sell and spread word of mouth about their products globally, while consumers can get innovations faster and more tailored to their needs. We believe that we have much to offer, and we are proud of doing what we truly love.</p>
+				</div><!-- col-lg-6 -->
+				
+				<div class="col-lg-6">
+					<p> We think that over the next few year, we will support thousands of enterpreneurs, bringing products to millions of customers. We are working hard to establish world-leading platform for innovations and smart technologies. As part of our social responsibility, we are planning to give 5% of our earnings back to innovators.</p>
+				</div><!-- col-lg-6 -->
+			</div><!-- row -->
+		</div><!-- container -->
+		
+		<!-- ==== SECTION DIVIDER1 -->
+		<section class="section-divider textdivider divider1">
+			<div class="container">
+				<h1>INNOVATIONS EXPAND BOUNDARIES</h1>
+				<hr>
+				<p>To achieve real change, we have to expand boundaries. 					
+				Because the future is unknown, we support early adopters and evalangelists who have courage to be part of bigger things.</p>
+			</div><!-- container -->
+		</section><!-- section -->
+		
+		
+		<!-- ==== VISION ==== -->
+		<div class="container" id="vision" name="vision">
+			<br>
+			<br>
+			<div class="row">
+				<h2 class="centered">ONE PLACE, ONE VOICE.</h2>
+				<hr>
+				<br>
+				<div class="col-lg-offset-2 col-lg-8">
+					<p>Innovators and consumers. Two halves of our world. Often these two are divided by long distance and different views that create barriers for innovations. </p>
+					<p>We squash those barriers by designing collaborative environment that focuses on creating greater products.</p>
+					<p>Like becomes a passion. Passion becomes support. </p>
+				</div><!-- col-lg -->
+			</div><!-- row -->
+			
+
+		</div><!-- container -->
+  		
+
+		<!-- ==== SECTION DIVIDER2 -->
+		<section class="section-divider textdivider divider2">
+			<div class="container">
+				<h1>INNOVATION IS AN INTERACTION</h1>
+				<hr>
+				<p>To develop more innovative and more meaningful product we encourage people to endorse greater products globally and give a voice in what people really need </p>
+			</div><!-- container -->
+		</section><!-- section -->
+
+		<!-- ==== TEAM MEMBERS ==== -->
+		<div class="container" id="team" name="team">
+		<br>
+			<div class="row white centered">
+				<h1 class="centered">MEET OUR AWESOME TEAM</h1>
+				<hr>
+				<br>
+				<br>
+				<div class="col-lg-6 centered">
+					<img class="img img-circle" src="assets/img/team/team01.jpg" height="120px" width="120px" alt="">
+					<br>
+					<h4><b>Paul Tsarevsky, CEO</b></h4>
+					<a href="https://twitter.com/challenger63" class="icon icon-twitter"></a>
+					<a href="https://www.facebook.com/challenger63" class="icon icon-facebook"></a>
+							<p>Paul is an experienced leader who can manage projects from inception to delivery. He understands the importance of innovations as well as how tought for enterpeneurs to bring thier products to global consumers. Paul has increadible international experience across four continents and holds an MBA degree from University of Cambridge</p>
+				</div><!-- col-lg-3 -->
+				
+				<div class="col-lg-6 centered">
+					<img class="img img-circle" src="assets/img/team/team02.jpg" height="120px" width="120px" alt="">
+					<br>
+					<h4><b>Karthik Rajgopal, CTO</b></h4>
+					<a href="#" class="icon icon-twitter"></a>
+					<a href="https://www.facebook.com/karthik.rajgopal.3" class="icon icon-facebook"></a>
+					<a href="#" class="icon icon-flickr"></a>
+					<p>Karthik combines an expert technical knowledge with a real eye for design. Working with clients from a wide range of industries, he fully understands importance of technology and innovations. He is a current post-graduate student at University of Melbourne</p>
+				</div><!-- col-lg-3 -->
+				
+				<!-- <div class="col-lg-3 centered">
+					<img class="img img-circle" src="assets/img/team/team03.jpg" height="120px" width="120px" alt="">
+					<br>
+					<h4><b>Michele Lampa</b></h4>
+					<a href="#" class="icon icon-twitter"></a>
+					<a href="#" class="icon icon-facebook"></a>
+					<a href="#" class="icon icon-flickr"></a>
+					<p>Be a creative director is a hard task, but Michele loves what she does. Her combination of knowledge and expertise is an important pillar in our agency.</p>
+				</div><!-- col-lg-3 --> 
+				
+				<!-- <div class="col-lg-3 centered">
+					<img class="img img-circle" src="assets/img/team/team04.jpg" height="120px" width="120px" alt="">
+					<br>
+					<h4><b>Jaye Smith</b></h4>
+					<a href="#" class="icon icon-twitter"></a>
+					<a href="#" class="icon icon-facebook"></a>
+					<a href="#" class="icon icon-flickr"></a>
+					<p>Jaye began making websites when animated logos and scrolling text were cool, but has since found a love for simplicity, creating websites that are a pleasure to browse. Monkey Island Fan.</p>
+				</div><!-- col-lg-3 --> 
+				
+			</div><!-- row -->
+		</div><!-- container -->
+
+		<!-- ==== GREYWRAP ==== -->
+		<div id="greywrap">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-8 centered">
+						<img class="img-responsive" src="assets/img/macbook.png" align="">
+					</div>
+					<div class="col-lg-4">
+						<h2>We Are Hiring!</h2>
+						<p>Do you want to be one of us? Currently we are in need of a digital marketing guru. If you feel you fit therole, email your resume to <a href="#">jobs@inpulze.com</a></p>
+					   
+                        </div>					
+				</div>
+			</div>
+			<br>
+			<br>
+		</div> 
+		<!-- greywrap -->
+		
+	<!-- ==== BLOG ==== -->
+		<div class="container" id="blog" name="blog">
+		<br>
+			<div class="row">
+				<br>
+				<h1 class="centered">WE ARE STORYTELLERS</h1>
+				<hr>
+				<br>
+				<br>
+			</div><!-- /row -->
+			
+			<div class="row">
+				<div class="col-lg-6 blog-bg">
+					<div class="col-lg-4 centered">
+					<br>
+						<p><img class="img img-circle" src="assets/img/team/team01.jpg" width="60px" height="60px"></p>
+						<h4>Paul Tsarevsky</h4>
+						<h5>Published March 25 </h5>
+					</div>
+					<div class="col-lg-8 blog-content">
+						<h2>Innovations Today</h2>
+						<p>We live in some of the most interesting times for innovations and creativity. The last 10 years of Internet growth created completely new business environment. We are entering a new epoch when for innovators global adoption of ideas is becoming of bigger importance than initial creation. To compete in a globalized world, innovators must focus on achieving global sales quicker and through bigger value proposition. Modern Asian and Western trading platforms, although provide a great opportunity for international trade, focus purely on commerce sides of products, leading to product commoditization and limited support of innovation development. To solve these issues, we are creating INPULZE - a new platform that provides an ideal place for innovators to focus on value proposition and for consumers to get new product quickier and better tailored to their needs.  
+
+</p>
+					
+						<p><a href="#" class="icon icon-link"> Read More</a></p>
+						<br>
+					</div>
+				</div><!-- /col -->
+				
+				<div class="col-lg-6 blog-bg">
+					<div class="col-lg-4 centered">
+					<br>
+						<p><img class="img img-circle" src="assets/img/team/team02.jpg" width="60px" height="60px"></p>
+						<h4>Karthik Rajgopal</h4>
+						<h5>Published March 29.</h5>
+					</div>
+					<div class="col-lg-8 blog-content">
+						<h2>A Beautiful Story</h2>
+						<p>Working hard is always exciting.</p>
+					
+						<p><a href="#" class="icon icon-link"> Read More</a></p>
+						<br>
+					</div>
+				</div><!-- /col -->
+			</div><!-- /row -->
+			<br>
+			<br>
+		</div><!-- /container -->
+
+		
+		<!-- ==== SECTION DIVIDER6 ==== -->
+		<section class="section-divider textdivider divider6">
+			<div class="container">
+				<h1>CRAFTED IN AUSTRALIA.</h1>
+				<hr>
+				<p><a class="icon icon-twitter" href="https://twitter.com/inpulzevoice"></a> | <a class="icon icon-facebook" href="www.facebook.com/inpulze"></a></p>
+			</div><!-- container -->
+		</section><!-- section -->
+		
+		<div class="container" id="contact" name="contact">
+			<div class="row">
+			<br>
+				<h1 class="centered">THANKS FOR VISITING US</h1>
+				<hr>
+				<br>
+				<br>
+				<div class="col-lg-4">
+					<h3>Contact Information</h3>
+					<p><span class="icon icon-home"></span> 6/25 Byron St, North Melbourne, VIC 3051, Melbourne, Australia <br/>
+						<span class="icon icon-phone"></span> +61 435 282 737 <br/>
+						<span class="icon icon-envelop"></span> <a href="mailto:contact_us@inpulze.com"> contact_us@inpulze.com</a> <br/>
+						<span class="icon icon-twitter"></span> <a href="https://twitter.com/inpulzevoice"> @InpulzeVoice</a> <br/>
+						<span class="icon icon-facebook"></span> <a href="https://www.facebook.com/inpulzepty"> Inpulze </a> <br/>
+					</p>
+				</div><!-- col -->
+				
+				<div class="col-lg-4">
+					<h3>Newsletter</h3>
+					<p>Register to our newsletter and be updated with the latests information regarding our services, offers and much more.</p>
+					<p>
+						<form action='/submit' method='post' class="form-horizontal" role="form">
+						  <div class="form-group">
+						    <label for="inputEmail1" class="col-lg-4 control-label"></label>
+						    <div class="col-lg-10">
+						      <input type="email" class="form-control" id="email" placeholder="Email">
+						    </div>
+						  </div>
+						  <div class="form-group">
+						    <label for="text1" class="col-lg-4 control-label"></label>
+						    <div class="col-lg-10">
+						      <input type="TEXT" class="form-control" id="user" placeholder="Your Name">
+						    </div>
+						  </div>
+						  <div class="form-group">
+						    <div class="col-lg-10">
+						      <input type="button" id="submit" class="btn btn-success" value="Subscribe">
+						      <label id = "submitstatus" class="col-lg-4 control-label"></label>
+						    </div>
+						  </div>
+					   </form><!-- form -->
+					</p>
+				</div><!-- col -->
+				
+				<div class="col-lg-4">
+					<h3>Support Us</h3>
+					<p>If you are interested in our platform and want to support us, we encourage you to participate in our crowdfunding campaign starting in April and platform testing due in May. Please feel free to email us with your ideas and expectations and we would get in touch with you. </p>
+				</div><!-- col -->
+
+			</div><!-- row -->
+		
+		</div><!-- container -->
+
+		<div id="footerwrap">
+			<div class="container">
+				<h4>Created by <a href="http://inpulze.com">inpulze.com</a> - Copyright 2015</h4>
+			</div>
+		</div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+		
+
+	<script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="assets/js/retina.js"></script>
+	<script type="text/javascript" src="assets/js/jquery.easing.1.3.js"></script>
+    <script type="text/javascript" src="assets/js/smoothscroll.js"></script>
+	<script type="text/javascript" src="assets/js/jquery-func.js"></script>
+  </body>
+</html>

@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Happpiest Person in Perth</title>
+        <link rel="stylesheet" type="text/css" href="/assets/css/styleinput.css" />
+
+    <!-- <link href="assets/css/bootstrap.css" rel="stylesheet"> -->
+
+    <!-- Custom styles for this template
+    <!-- <link href="assets/css/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/icomoon.css">
+    <link href="assets/css/animate-custom.css" rel="stylesheet">  -->
+
+        <!-- <link href="assets/css/ampm.css" rel="stylesheet"> -->
+        <style type="text/css">
+            /* Set a size for our map container, the Google Map will take up 100% of this container */
+            html { height: 100% } 
+    body { height: 100%; margin: 0; padding: 0 } 
+     
+    #wrapper { position: relative; }
+    #over_map { position: absolute; background-color: white; top: 10px; left: 10px; z-index: 99; background: black; }
+    #navbar-main{position: absolute;;z-index: 99}
+    #curve_chart{ position: absolute;top: 10px; right: 10px; z-index: 99}
+            #map {
+                width: 100%;
+                height: 800px;
+                position: absolute;
+                top:0;
+                left:0;
+                right:0;
+                text-align: center;
+                overflow: hidden;
+            }
+           /* .onoffswitch {
+    position: relative; width: 90px;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+}
+.onoffswitch-checkbox {
+    display: none;
+}
+.onoffswitch-label {
+    display: block; overflow: hidden; cursor: pointer;
+    border: 2px solid #999999; border-radius: 20px;
+}
+.onoffswitch-inner {
+    display: block; width: 200%; margin-left: -100%;
+    -moz-transition: margin 0.3s ease-in 0s; -webkit-transition: margin 0.3s ease-in 0s;
+    -o-transition: margin 0.3s ease-in 0s; transition: margin 0.3s ease-in 0s;
+}
+.onoffswitch-inner:before, .onoffswitch-inner:after {
+    display: block; float: left; width: 50%; height: 30px; padding: 0; line-height: 30px;
+    font-size: 14px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+    -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+}
+.onoffswitch-inner:before {
+    content: "PM";
+    padding-left: 10px;
+    background-color: #34A7C1; color: #FFFFFF;
+}
+.onoffswitch-inner:after {
+    content: "AM";
+    padding-right: 10px;
+    background-color: #EEEEEE; color: #999999;
+    text-align: right;
+}
+.onoffswitch-switch {
+    display: block; width: 18px; margin: 6px;
+    background: #FFFFFF;
+    border: 2px solid #999999; border-radius: 20px;
+    position: absolute; top: 0; bottom: 0; right: 56px;
+    -moz-transition: all 0.3s ease-in 0s; -webkit-transition: all 0.3s ease-in 0s;
+    -o-transition: all 0.3s ease-in 0s; transition: all 0.3s ease-in 0s; 
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+    margin-left: 0;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+    right: 0px; 
+}*/
+        </style>
+        
+        <!-- 
+            You need to include this script tag on any page that has a Google Map.
+
+            The following script tag will work when opening this example locally on your computer.
+            But if you use this on a localhost server or a live website you will need to include an API key. 
+            Sign up for one here (it's free for small usage): 
+                https://developers.google.com/maps/documentation/javascript/tutorial#api_key
+
+            After you sign up, use the following script tag with YOUR_GOOGLE_API_KEY replaced with your actual key.
+                <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_API_KEY&sensor=false"></script>
+        -->
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+        <script type="text/javascript" src="/assets/js/modernizr.custom.js"></script>
+        <script src="/assets/js/jquery.min.js">  </script>
+        <script type="text/javascript"
+          src="https://www.google.com/jsapi?autoload={
+            'modules':[{
+              'name':'visualization',
+              'version':'1',
+              'packages':['corechart']
+            }]
+          }"></script>
+
+        <script type="text/javascript">
+            // When the window has finished loading create our google map below
+            var map,mapOptions,daymapOptions,isday,userlatlng;
+            function mapinit(options)
+            {
+var mapElement = document.getElementById('map');
+
+                // Create the Google Map using our element and options defined above
+                 map = new google.maps.Map(mapElement, options);
+
+
+ new google.maps.Marker({
+          map: map,
+          position: userlatlng,
+          icon: {
+    path: google.maps.SymbolPath.CIRCLE,
+    fillOpacity: 0.5,
+    fillColor: 'red',
+    strokeOpacity: 1.0,
+    strokeColor: 'yellow',
+    strokeWeight: 3.0, 
+    scale: 20 //pixels
+  },
+    draggable: true,
+    labelAnchor: new google.maps.Point(10, 10)
+        });
+            }
+            function toggleTraffic(){
+                if(isday === 0)
+                {
+mapinit(daymapOptions);
+isday =1;
+                }
+                else
+                {
+                    console.log("It's day to night");
+                    mapinit(mapOptions);
+                    isday =0;
+                }
+            
+            }
+
+                // Create the Google Map using our element and options defined above
+                
+            google.maps.event.addDomListener(window, 'load', init);
+            //google.maps.event.addDomListener(document.getElementById('button1'), 'click', init);
+
+function Graphs(){
+          window.location = "http://localhost:3000/graphs";
+        };
+            function FindTweet(){
+          var time=$("#time").val();
+          var ampm=$("#mySelect").val();
+          console.log(ampm);
+          if(ampm === 'PM')
+          {
+            if(time != '12')
+            time + 12;
+          }
+          else
+          {
+            if(time === '12')
+            {
+                time = 0;
+            }
+          }
+          var year=$("#year").val();
+          var sentiment=$("#sentiment").val();
+          
+         var posting = $.post(location.href+"go",{hour: time,sentiment: sentiment,year:year});
+ 
+  // Put the results in a div
+  posting.done(function( data ) {
+    console.log("posting");
+    console.log(data);
+            document.getElementById("year").innerHTML = data;
+
+        });
+    }
+             
+            
+            function init() {
+                userlatlng = new google.maps.LatLng(-31.953513, 115.857047)
+                daymapOptions = {
+                    // How zoomed in you want the map to start at (always required)
+                    zoom: 11,
+
+                    // The latitude and longitude to center the map (always required)
+                    center: userlatlng, // Perth
+
+                    disableDefaultUI: true
+                }
+                 mapOptions = {
+                    // How zoomed in you want the map to start at (always required)
+                    zoom: 11,
+
+                    // The latitude and longitude to center the map (always required)
+                    center: userlatlng, // Perth
+
+                    disableDefaultUI: true,
+
+                    styles: 
+                    [
+    {
+        "featureType": "all",
+        "elementType": "labels.text.fill",
+        "stylers": [
+            {
+                "saturation": 36
+            },
+            {
+                "color": "#000000"
+            },
+            {
+                "lightness": 40
+            }
+        ]
+    },
+    {
+        "featureType": "all",
+        "elementType": "labels.text.stroke",
+        "stylers": [
+            {
+                "visibility": "on"
+            },
+            {
+                "color": "#000000"
+            },
+            {
+                "lightness": 16
+            }
+        ]
+    },
+    {
+        "featureType": "all",
+        "elementType": "labels.icon",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "administrative",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "color": "#000000"
+            },
+            {
+                "lightness": 20
+            }
+        ]
+    },
+    {
+        "featureType": "administrative",
+        "elementType": "geometry.stroke",
+        "stylers": [
+            {
+                "color": "#000000"
+            },
+            {
+                "lightness": 17
+            },
+            {
+                "weight": 1.2
+            }
+        ]
+    },
+    {
+        "featureType": "landscape",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#000000"
+            },
+            {
+                "lightness": 20
+            }
+        ]
+    },
+    {
+        "featureType": "poi",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#000000"
+            },
+            {
+                "lightness": 21
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "color": "magenta"
+            },
+            {
+                "lightness": 17
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "geometry.stroke",
+        "stylers": [
+            {
+                "color": "#000000"
+            },
+            {
+                "lightness": 29
+            },
+            {
+                "weight": 0.2
+            }
+        ]
+    },
+    {
+        "featureType": "road.arterial",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#000000"
+            },
+            {
+                "lightness": 18
+            }
+        ]
+    },
+    {
+        "featureType": "road.local",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#000000"
+            },
+            {
+                "lightness": 16
+            }
+        ]
+    },
+    {
+        "featureType": "transit",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#000000"
+            },
+            {
+                "lightness": 19
+            }
+        ]
+    },
+    {
+        "featureType": "water",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#000000"
+            },
+            {
+                "lightness": 17
+            }
+        ]
+    }
+
+]
+
+                };
+                // if(dayornight === 'day')
+                // {
+                //     mapOptions = daymapOptions;
+                // }
+                // Get the HTML DOM element that will contain your map 
+                // We are using a div with id="map" seen below in the <body>
+                var mapElement = document.getElementById('map');
+
+                // Create the Google Map using our element and options defined above
+                 map = new google.maps.Map(mapElement, daymapOptions);
+
+
+ new google.maps.Marker({
+          map: map,
+          position: userlatlng,
+          icon: {
+    path: google.maps.SymbolPath.CIRCLE,
+    fillOpacity: 0.5,
+    fillColor: 'red',
+    strokeOpacity: 1.0,
+    strokeColor: 'yellow',
+    strokeWeight: 3.0, 
+    scale: 20 //pixels
+  },
+    draggable: true,
+    labelAnchor: new google.maps.Point(10, 10)
+        });
+ isday=1;
+ google.maps.event.addDomListener(document.getElementById('mySelect'), 'change', toggleTraffic);
+        // Draw a circle around the user position to have an idea of the current localization accuracy
+        // var circle = new google.maps.Circle({
+        //   center: userlatlng,
+        //   radius: 10,
+        //   map: map,
+        //   fillColor: '#0000FF',
+        //   fillOpacity: 0.5,
+        //   strokeColor: '#0000FF',
+        //   strokeOpacity: 1.0
+        // });
+        // map.fitBounds(circle.getBounds());
+        // Draw a circle around the user position to have an idea of the current localization accuracy
+        
+                // Let's also add a marker while we're at it
+                // var marker = new google.maps.Marker({
+                //     position: new google.maps.LatLng(-31.953513, 115.857047),
+                //     map: map,
+                //     title: 'Snazzy!'
+                // });
+            }
+          
+        </script>
+    </head>
+    <body>
+      
+        <!-- The element that will contain our Google Map. This is used in both the Javascript and CSS above. -->
+      
+    <div id="map" ></div>
+  <form id="over_map">
+  <h1>Let's find the happiest person in Perth</h1>
+  <div class="inset">
+  <p>
+    <div class="col-xs-6" id ="timecomponent">
+            <label for="time">HOUR OF DAY</label>
+            <!-- <input type="text" name="hour" id="time"> -->
+            <select class="form-control" id="time">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+    <option value="11">11</option>
+    <option value="12">12</option>
+    </select>
+            <select class="form-control" id="mySelect">
+    <option value="AM">AM</option>
+    <option value="PM">PM</option>
+    </select>
+        </div>
+        
+  </p>
+  <p>
+    <label for="year">YEAR</label>
+    <input type="text" name="year" id="year">
+  </p>
+  <p>
+    <label for="sentiment">SENTIMENT</label>
+    <select class="form-control" id="sentiment">
+    <option value="Positive">Happy</option>
+    <option value="Negative">Sad</option>
+    <option value="Neutral">Sage Mode</option>
+    </select>
+  </p>
+  </div>
+  <p class="p-container">
+    <input type="submit" name="graphs" id="graph" value="Graphs" onclick="Graphs()">
+    <input type="submit" name="go" id="go" value="Scourge" onclick="FindTweet()">
+
+  </p>
+</form> 
+
+
+<!-- <div class="onoffswitch" id="over_map">
+
+    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+    <label class="onoffswitch-label" for="myonoffswitch">
+        <span class="onoffswitch-inner"></span>
+        <span class="onoffswitch-switch"></span>
+    </label>
+</div> -->
+
+</div> 
+
+    </body>
+</html>
